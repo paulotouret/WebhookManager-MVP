@@ -1,0 +1,14 @@
+{
+  "name": "@workspace/api-client-react",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./index.ts",
+  "exports": {
+    ".": "./index.ts"
+  },
+  "peerDependencies": {
+    "@tanstack/react-query": "^5",
+    "react": "^18"
+  }
+}

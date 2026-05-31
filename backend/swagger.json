@@ -1,0 +1,104 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Webhook Manager API",
+    "description": "API documentation for Webhook Manager",
+    "version": "1.0.0"
+  },
+  "components": { "schemas": {} },
+  "paths": {
+    "/users/register": {
+      "post": { "responses": { "200": { "description": "Default Response" } } }
+    },
+    "/users/me": {
+      "get": { "responses": { "200": { "description": "Default Response" } } }
+    },
+    "/auth/login": {
+      "post": { "responses": { "200": { "description": "Default Response" } } }
+    },
+    "/projects/": {
+      "post": { "responses": { "200": { "description": "Default Response" } } },
+      "get": { "responses": { "200": { "description": "Default Response" } } }
+    },
+    "/endpoints/": {
+      "post": { "responses": { "200": { "description": "Default Response" } } },
+      "get": { "responses": { "200": { "description": "Default Response" } } }
+    },
+    "/events/": {
+      "get": { "responses": { "200": { "description": "Default Response" } } }
+    },
+    "/events/{id}": {
+      "get": {
+        "parameters": [
+          {
+            "schema": { "type": "string" },
+            "in": "path",
+            "name": "id",
+            "required": true
+          }
+        ],
+        "responses": { "200": { "description": "Default Response" } }
+      }
+    },
+    "/replay/": {
+      "post": { "responses": { "200": { "description": "Default Response" } } }
+    },
+    "/wh/{urlPath}": {
+      "get": {
+        "parameters": [
+          {
+            "schema": { "type": "string" },
+            "in": "path",
+            "name": "urlPath",
+            "required": true
+          }
+        ],
+        "responses": { "200": { "description": "Default Response" } }
+      },
+      "post": {
+        "parameters": [
+          {
+            "schema": { "type": "string" },
+            "in": "path",
+            "name": "urlPath",
+            "required": true
+          }
+        ],
+        "responses": { "200": { "description": "Default Response" } }
+      },
+      "put": {
+        "parameters": [
+          {
+            "schema": { "type": "string" },
+            "in": "path",
+            "name": "urlPath",
+            "required": true
+          }
+        ],
+        "responses": { "200": { "description": "Default Response" } }
+      },
+      "delete": {
+        "parameters": [
+          {
+            "schema": { "type": "string" },
+            "in": "path",
+            "name": "urlPath",
+            "required": true
+          }
+        ],
+        "responses": { "200": { "description": "Default Response" } }
+      },
+      "patch": {
+        "parameters": [
+          {
+            "schema": { "type": "string" },
+            "in": "path",
+            "name": "urlPath",
+            "required": true
+          }
+        ],
+        "responses": { "200": { "description": "Default Response" } }
+      }
+    }
+  }
+}

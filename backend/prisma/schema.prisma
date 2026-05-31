@@ -1,0 +1,84 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id           String    @id @default(uuid())
+  email        String    @unique
+  password     String
+  name         String?
+  tokenVersion Int       @default(1)
+  projects     Project[]
+  
+  mfaEnabled   Boolean   @default(false)
+  mfaSecret    String?
+  mfaBackupCodes String?
+  
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@map("users")
+}
+
+model Project {
+  id          String     @id @default(uuid())
+  name        String
+  description String?
+  active      Boolean    @default(true)
+  userId      String
+  user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  endpoints   Endpoint[]
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  @@map("projects")
+}
+
+model Endpoint {
+  id          String   @id @default(uuid())
+  name        String
+  description String?
+  urlPath     String   @unique
+  projectId   String
+  project     Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  events      Event[]
+  active      Boolean  @default(true)
+  targetUrl   String?
+  secret      String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("endpoints")
+}
+
+model Event {
+  id         String   @id @default(uuid())
+  endpointId String
+  endpoint   Endpoint @relation(fields: [endpointId], references: [id], onDelete: Cascade)
+  method     String
+  headers    Json
+  body       Json
+  query      Json
+  status     Int?
+  remoteIp   String?
+  replays    Replay[]
+  createdAt  DateTime @default(now())
+
+  @@map("events")
+}
+
+model Replay {
+  id         String   @id @default(uuid())
+  eventId    String
+  event      Event    @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  targetUrl  String?
+  status     Int
+  response   Json?
+  createdAt  DateTime @default(now())
+
+  @@map("replays")
+}
