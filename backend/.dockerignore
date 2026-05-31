@@ -1,9 +1,0 @@
-node_modules
-dist
-.env
-.git
-.gitignore
-README.md
-server.log
-get-docker.sh
-prisma/migrations
