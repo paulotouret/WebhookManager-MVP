@@ -32,3 +32,7 @@ pnpm-debug.log*
 
 # Prisma
 backend/generated/
+
+# Docker
+docker-compose.yml
+backend/docker-compose.yml
